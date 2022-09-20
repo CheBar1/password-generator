@@ -7,12 +7,12 @@ var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 var numeric = [1,2,3,4,5,6,7,8,9,0]
 var specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "[", "]", "`", "{", "|", "}", "~", "/", '"'];
-var myArrays = [lowercase, uppercase, numeric, specialChar]
+var userChoiceCharArray = []; //empty array pending user selection of characters
 
 // generatePassword function
 function generatePassword() {
 
-// Promt the user for the required password 
+// Prompt the user for the required password 
   var userInput = window.prompt("How many characters would you like your password to contain?");
   var passwordLength = parseInt(userInput);
 
@@ -38,26 +38,35 @@ function generatePassword() {
       return;
   }
 
-// Generate password based on criteria
+// Generate password based on criteria - ensure at least 1 of each character type selected by user is in password
   if(lowercaseConfirm) {
+    userChoiceCharArray.concat(lowercase);
     var index = Math.floor(Math.random() * lowercase.length);
   }
 
   if(uppercaseConfirm) {
+    userChoiceCharArray.concat(uppercase);
     var index = Math.floor(Math.random() * uppercase.length);
   }
   
   if(numericConfirm) {
+    userChoiceCharArray.concat(numeric);
     var index = Math.floor(Math.random() * numeric.length);
   }
   
   if(specialCharConfirm) {
+    userChoiceCharArray.concat(specialChar);
     var index = Math.floor(Math.random() * specialChar.length);
   }
 
+// As password mut be at least 8 characters, even if user selected all 4 character types, and they were used once each, there would still be more characters required
+  for (index = 0; index < passwordLength; index ++) {
+    password = index;
+  }
 
 // Display password to the page
-  return "sorry, still working on the code... can't quite work out how to get the random selection to generate.";
+  return "sorry, i still can't get the coding right to generate the password";
+
 }
 
 // Write password to the #password input
