@@ -11,7 +11,8 @@ The app operates in the browser and presents the user with a series of prompts t
 The following images show the web application's appearance and functionality:
 ![ScreenShot](./assets/images/screenshot-password-site.png)
 
-##Link to deployed application
+## Link to deployed application
+https://chebar1.github.io/password-generator/
 
 
 ## License
