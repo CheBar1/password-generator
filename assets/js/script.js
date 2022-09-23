@@ -9,6 +9,8 @@ var numeric = [1,2,3,4,5,6,7,8,9,0]
 var specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "[", "]", "`", "{", "|", "}", "~", "/", '"'];
 var userChoiceCharArray = []; //empty array pending user selection of characters
 
+var finalPassword = "";
+
 // generatePassword function
 function generatePassword() {
 
@@ -38,35 +40,32 @@ function generatePassword() {
       return;
   }
 
-// Generate password based on criteria - ensure at least 1 of each character type selected by user is in password
+// Generate password based on criteria type selected by user 
   if(lowercaseConfirm) {
-    userChoiceCharArray.concat(lowercase);
-    var index = Math.floor(Math.random() * lowercase.length);
+    userChoiceCharArray = userChoiceCharArray.concat(lowercase);
   }
 
   if(uppercaseConfirm) {
-    userChoiceCharArray.concat(uppercase);
-    var index = Math.floor(Math.random() * uppercase.length);
+    userChoiceCharArray = userChoiceCharArray.concat(uppercase); 
   }
   
   if(numericConfirm) {
-    userChoiceCharArray.concat(numeric);
-    var index = Math.floor(Math.random() * numeric.length);
+    userChoiceCharArray = userChoiceCharArray.concat(numeric); 
   }
   
   if(specialCharConfirm) {
-    userChoiceCharArray.concat(specialChar);
-    var index = Math.floor(Math.random() * specialChar.length);
+    userChoiceCharArray = userChoiceCharArray.concat(specialChar); 
   }
 
-// As password mut be at least 8 characters, even if user selected all 4 character types, and they were used once each, there would still be more characters required
-  for (index = 0; index < passwordLength; index ++) {
-    password = index;
-  }
-
+// Generat random password at the length requested by the user
+for (index = 0; index < passwordLength; index ++) {
+  var randomIndex = Math.floor(Math.random() * userChoiceCharArray.length);
+  console.log(randomIndex);
+  var randomChar = userChoiceCharArray[randomIndex];
+  finalPassword = finalPassword.concat(randomChar);
+}
 // Display password to the page
-  return "sorry, i still can't get the coding right to generate the password";
-
+return finalPassword;
 }
 
 // Write password to the #password input
